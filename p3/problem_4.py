@@ -34,7 +34,10 @@ def sort_012(input_list):
     Given an input array consisting on only 0, 1, and 2, sort the array in a single traversal.
 
     Args:
-       input_list(list): List to be sorted
+       input_list (list): List to be sorted
+       
+    Returns:
+       list: Sorted array
     """
     low = 0
     mid = 0
@@ -61,6 +64,32 @@ def test_function(test_case):
     else:
         print("Fail")
 
+# Test Case 1: Regular case
 test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
+
+# Test Case 2: Regular case
 test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
+
+# Test Case 3: Regular case
 test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
+
+# Test Case 4: Edge case - Empty input_list
+test_function([])
+
+# Test Case 5: Edge case - All elements are the same
+test_function([1, 1, 1, 1, 1, 1])
+
+"""
+input_lists with 1000 and 10000 elements, respectively. 
+The elements are randomly chosen from 0, 1, and 2. 
+"""
+
+import random
+
+# Test Case 6: Edge case - Large input_list with 1000 elements
+large_input_list = [random.choice([0, 1, 2]) for _ in range(1000)]
+test_function(large_input_list)
+
+# Test Case 7: Edge case - Large input_list with 10000 elements
+large_input_list = [random.choice([0, 1, 2]) for _ in range(10000)]
+test_function(large_input_list)
