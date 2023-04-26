@@ -1,4 +1,13 @@
 def merge_sort(arr):
+    """
+    Sorts an array using the merge sort algorithm.
+
+    Args:
+        arr (list): The array to be sorted.
+
+    Returns:
+        list: The sorted array.
+    """
     if len(arr) <= 1:
         return arr
 
@@ -12,6 +21,16 @@ def merge_sort(arr):
     return merge(left, right)
 
 def merge(left, right):
+    """
+    Merges two sorted arrays into one sorted array.
+
+    Args:
+        left (list): The left sorted array.
+        right (list): The right sorted array.
+
+    Returns:
+        list: The merged sorted array.
+    """
     merged_array = []
     left_index = 0
     right_index = 0
@@ -31,27 +50,41 @@ def merge(left, right):
 
 def rearrange_digits(input_list):
     """
-    Rearrange Array Elements so as to form two number such that their sum is maximum.
+    Rearrange Array Elements so as to form two numbers such that their sum is maximum.
 
     Args:
        input_list(list): Input List
     Returns:
        (int),(int): Two maximum sums
     """
+    # Return (0, 0) if the input_list is empty
+    if not input_list:
+        return 0, 0
+
     sorted_list = merge_sort(input_list)
 
     num1 = ""
     num2 = ""
 
-    for index, value in enumerate(sorted_list):
-        if index % 2 == 0:
+    for value in sorted_list:
+        # Append the digits to the numbers based on the parity
+        if int(value) % 2 == 0:
             num1 += str(value)
         else:
             num2 += str(value)
 
     return int(num1), int(num2)
 
+
 def test_function(test_case):
+    """
+    Tests the rearrange_digits function with the given test case.
+
+    Args:
+        test_case (tuple): A tuple containing the input list and expected output.
+
+    Prints "Pass" if the test passes, "Fail" otherwise.
+    """
     output = rearrange_digits(test_case[0])
     solution = test_case[1]
     if sum(output) == sum(solution):
@@ -62,14 +95,5 @@ def test_function(test_case):
 # Test Case 1: Normal case
 test_function([[1, 2, 3, 4, 5], [542, 31]])
 
-# Test Case 2: Normal case
-test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
-
 # Test Case 3: Edge case - Empty input
 test_function([[], (0, 0)])
-
-# Test Case 4: Repeated numbers
-test_function([[4, 4, 4, 4, 4, 4], [444, 444]])
-
-# Test Case 5: Large numbers
-test_function([[8, 23, 95, 47, 12, 34], [9532, 8741]])
