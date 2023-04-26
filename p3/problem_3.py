@@ -146,4 +146,4 @@ test_function([[5, 2], [5, 2]])
 test_function([[7, 7, 7, 7, 7, 7, 7], [7777, 777]])
 
 # Test Case 7: Edge case - Large numbers
-test_function([[9, 5, 8, 6, 7, 3, 2, 1, 0, 4], [97531, 86420
+test_function([[9, 5, 8, 6, 7, 3, 2, 1, 0, 4], [97531, 86420]])
