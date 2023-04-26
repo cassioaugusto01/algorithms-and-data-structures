@@ -106,16 +106,58 @@ def test_function(test_case):
         print("Fail")
 
 
-# Test cases
+# Test cases for edge conditions
+
+# Test Case 1
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
+
+# Test Case 2
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
+
+# Test Case 3
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
+
+# Test Case 4
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
+
+# Test Case 5
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
 
+
 # Edge cases
-test_function([[], 3])  # Test with an empty list
-test_function([[1], 1])  # Test with a list containing a single element
-test_function([[1], 2])  # Test with a list containing a single element and the target number not in the list
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 11])  # Test with a target number not in the list
-test_function([[6, 7, 8, 1, 2, 3, 4], 0])  # Test with a target number smaller than the smallest number in the list
+
+# Edge Case 1: Edge case - Empty input list
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
+
+# Edge Case 2: Edge case - Empty input list
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
+
+# Edge Case 3: Edge case - Empty input list
+test_function([[6, 7, 8, 1, 2, 3, 4], 8])
+
+# Edge Case 4: Edge case - Empty input list
+test_function([[6, 7, 8, 1, 2, 3, 4], 1])
+
+# Edge Case 5: Edge case - Empty input list
+test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+
+# Edge Case 6: Edge case - Empty input list
+test_function([[], -1])
+
+# Edge Case 7: Edge case - Single element
+test_function([[7], 7])
+
+# Edge Case 8: Edge case - Two elements
+test_function([[5, 2], 2])
+
+# Edge Case 9: Edge case - Large numbers
+test_function([[23, 37, 42, 87, 91, 95, 99, 3, 8, 14], 8])
+
+# Edge Case 10: Edge case - Target number not in the list
+test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 11])
+
+# Edge Case 11: Edge case - list containing a single element and the target number not in the list
+test_function([[1], 2])
+
+# Edge Case 12: Edge case - target number smaller than the smallest number in the list
+test_function([[6, 7, 8, 1, 2, 3, 4], 0])

@@ -1,51 +1,36 @@
 """
-Search in a Rotated Sorted Array
-You are given a sorted array which is rotated at some random pivot point.
+Problem 3: Rearrange Array Digits
 
-Example: [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]
+Rearrange Array Elements
+Rearrange Array Elements so as to form two number such that their sum is maximum. Return these two numbers. You can assume that all array elements are in the range [0, 9]. The number of digits in both the numbers cannot differ by more than 1. You're not allowed to use any sorting function that Python provides and the expected time complexity is O(nlog(n)).
 
-You are given a target value to search. If found in the array return its index, otherwise return -1.
+for e.g. [1, 2, 3, 4, 5]
 
-You can assume there are no duplicates in the array and your algorithm's runtime complexity must be in the order of O(log n).
+The expected answer would be [531, 42]. Another expected answer can be [542, 31]. In scenarios such as these when there are more than one possible answers, return any one.
 
+Here is some boilerplate code and test cases to start with:
 
-Example:
-
-Input: nums = [4,5,6,7,0,1,2], target = 0, Output: 4
-
-
-Boilerplate:
-
-def rotated_array_search(input_list, number):
+def rearrange_digits(input_list):
     
-    Find the index by searching in a rotated sorted array
+    Rearrange Array Elements so as to form two number such that their sum is maximum.
 
     Args:
-       input_list(array), number(int): Input array to search and the target
+       input_list(list): Input List
     Returns:
-       int: Index or -1
+       (int),(int): Two maximum sums
     
-   pass
+    pass
 
-def linear_search(input_list, number):
-    for index, element in enumerate(input_list):
-        if element == number:
-            return index
-    return -1
-    
 def test_function(test_case):
-    input_list = test_case[0]
-    number = test_case[1]
-    if linear_search(input_list, number) == rotated_array_search(input_list, number):
+    output = rearrange_digits(test_case[0])
+    solution = test_case[1]
+    if sum(output) == sum(solution):
         print("Pass")
     else:
         print("Fail")
 
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
-test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
-test_function([[6, 7, 8, 1, 2, 3, 4], 8])
-test_function([[6, 7, 8, 1, 2, 3, 4], 1])
-test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+test_function([[1, 2, 3, 4, 5], [542, 31]])
+test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
 """
 
 def find_pivot(input_list, low, high):
