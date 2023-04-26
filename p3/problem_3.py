@@ -32,7 +32,17 @@ def test_function(test_case):
 test_function([[1, 2, 3, 4, 5], [542, 31]])
 test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
 """
+
 def merge_sort(input_list):
+    """
+    Sorts the input_list using the merge sort algorithm.
+
+    Args:
+        input_list (list): The list of integers to be sorted.
+
+    Returns:
+        list: The sorted list of integers.
+    """
     if len(input_list) <= 1:
         return input_list
 
@@ -44,6 +54,16 @@ def merge_sort(input_list):
 
 
 def merge(left, right):
+    """
+    Merges two sorted lists into one sorted list.
+
+    Args:
+        left (list): The first sorted list of integers.
+        right (list): The second sorted list of integers.
+
+    Returns:
+        list: The merged sorted list of integers.
+    """
     merged_list = []
     left_index, right_index = 0, 0
 
@@ -62,12 +82,24 @@ def merge(left, right):
 
 
 def rearrange_digits(input_list):
+    """
+    Rearrange Array Elements so as to form two numbers such that their sum is maximum.
+
+    Args:
+        input_list (list): Input List
+
+    Returns:
+        (int, int): Two maximum sums
+    """
     if len(input_list) < 2:
         return input_list
 
+    # Sort the input list in descending order
     sorted_list = merge_sort(input_list)
+    
     num1, num2 = '', ''
 
+    # Alternate elements from sorted list to form two numbers
     for i in range(len(sorted_list)):
         if i % 2 == 0:
             num1 += str(sorted_list[i])
@@ -78,6 +110,15 @@ def rearrange_digits(input_list):
 
 
 def test_function(test_case):
+    """
+    Test function to evaluate the output of rearrange_digits function.
+
+    Args:
+        test_case (list): List containing input list and expected output.
+
+    Prints:
+        str: Pass if the output matches expected output, Fail otherwise.
+    """
     output = rearrange_digits(test_case[0])
     solution = test_case[1]
     if sum(output) == sum(solution):
@@ -105,4 +146,4 @@ test_function([[5, 2], [5, 2]])
 test_function([[7, 7, 7, 7, 7, 7, 7], [7777, 777]])
 
 # Test Case 7: Edge case - Large numbers
-test_function([[9, 5, 8, 6, 7, 3, 2, 1, 0, 4], [97531, 86420]])
+test_function([[9, 5, 8, 6, 7, 3, 2, 1, 0, 4], [97531, 86420
