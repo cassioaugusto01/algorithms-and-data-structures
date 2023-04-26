@@ -1,9 +1,27 @@
 """
+Objetivo desse Video
+
+Mostrar uso do Codespaces
+Projeto 3 - Problema 4 - Refatorar
+
+Refatorações:
+
+    1 imports no inicio do código
+    2 usar assert ou pytest nos testes
+
+Alterações que faço no ambiente:
+
+Alterar tema do Codespaces
+Colocar terminal do lado direito
+
+--------------------------------
 Problem 4: Dutch National Flag Problem
 Dutch National Flag Problem
-Given an input array consisting on only 0, 1, and 2, sort the array in a single traversal. You're not allowed to use any sorting function that Python provides.
+Given an input array consisting on only 0, 1, and 2, sort the array in a single traversal. 
+You're not allowed to use any sorting function that Python provides.
 
-Note: O(n) does not necessarily mean single-traversal. For e.g. if you traverse the array twice, that would still be an O(n) solution but it will not count as single traversal.
+Note: O(n) does not necessarily mean single-traversal. For e.g. if you traverse the array 
+twice, that would still be an O(n) solution but it will not count as single traversal.
 
 Here is some boilerplate code and test cases to start with:
 
@@ -28,6 +46,8 @@ test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
 test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
 test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
 """
+
+import random
 
 def sort_012(input_list):
     """
@@ -80,12 +100,11 @@ test_function([])
 test_function([1, 1, 1, 1, 1, 1])
 
 """
+Large input_list test cases:
+
 input_lists with 1000 and 10000 elements, respectively. 
 The elements are randomly chosen from 0, 1, and 2. 
 """
-
-import random
-
 # Test Case 6: Edge case - Large input_list with 1000 elements
 large_input_list = [random.choice([0, 1, 2]) for _ in range(1000)]
 test_function(large_input_list)
