@@ -1,20 +1,4 @@
 """
-Objetivo desse Video
-
-Mostrar uso do Codespaces
-Projeto 3 - Problema 4 - Refatorar
-
-Refatorações:
-
-    1 imports no inicio do código
-    2 usar assert ou pytest nos testes
-
-Alterações que faço no ambiente:
-
-Alterar tema do Codespaces
-Colocar terminal do lado direito
-
---------------------------------
 Problem 4: Dutch National Flag Problem
 Dutch National Flag Problem
 Given an input array consisting on only 0, 1, and 2, sort the array in a single traversal. 
