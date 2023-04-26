@@ -49,6 +49,17 @@ test_function([[6, 7, 8, 1, 2, 3, 4], 10])
 """
 
 def find_pivot(input_list, low, high):
+    """
+    Find the pivot element in the rotated sorted array.
+    
+    Args:
+        input_list (list): Rotated sorted array.
+        low (int): Starting index for the search.
+        high (int): Ending index for the search.
+        
+    Returns:
+        int: Pivot index, or -1 if not found.
+    """
     if high < low:
         return -1
     if high == low:
@@ -68,6 +79,18 @@ def find_pivot(input_list, low, high):
 
 
 def binary_search(input_list, low, high, number):
+    """
+    Perform a binary search on a sorted array.
+    
+    Args:
+        input_list (list): Sorted array.
+        low (int): Starting index for the search.
+        high (int): Ending index for the search.
+        number (int): Target number to search for.
+        
+    Returns:
+        int: Index of the target number if found, or -1 if not found.
+    """
     if high < low:
         return -1
 
@@ -81,6 +104,16 @@ def binary_search(input_list, low, high, number):
 
 
 def rotated_array_search(input_list, number):
+    """
+    Find the index of the target number in a rotated sorted array.
+    
+    Args:
+        input_list (list): Rotated sorted array.
+        number (int): Target number to search for.
+        
+    Returns:
+        int: Index of the target number if found, or -1 if not found.
+    """
     pivot = find_pivot(input_list, 0, len(input_list) - 1)
 
     if pivot == -1:
@@ -95,6 +128,16 @@ def rotated_array_search(input_list, number):
 
 
 def linear_search(input_list, number):
+    """
+    Perform a linear search on an array.
+    
+    Args:
+        input_list (list): Array to search.
+        number (int): Target number to search for.
+        
+    Returns:
+        int: Index of the target number if found, or -1 if not found.
+    """
     for index, element in enumerate(input_list):
         if element == number:
             return index
