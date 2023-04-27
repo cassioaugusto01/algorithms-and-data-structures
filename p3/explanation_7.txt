@@ -1,0 +1,17 @@
+Create a RouteTrieNode class that has children and a handler. The insert method 
+adds a new child node if it doesn't already exist.
+
+The RouteTrie class has an insert method for adding a handler and a find method 
+for finding a handler. The insert method traverses the trie, adding nodes as needed, 
+and sets the handler at the final node. The find method traverses the trie to find 
+the handler for a given path or returns None if no handler is found.
+
+The Router class wraps the RouteTrie class and has methods for adding handlers and 
+looking up handlers. The add_handler method splits the path and inserts the handler 
+into the trie. The lookup method splits the path, finds the handler in the trie, and 
+returns the handler or the not found handler if no handler is found. The split_path 
+method splits a path into parts.
+
+The time complexity of both adding a handler and looking up a handler is O(n), 
+where n is the number of parts in the path. The space complexity of the RouteTrie 
+is O(N * L), where N is the number of routes and L is the average number of parts in a route.
