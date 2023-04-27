@@ -1,0 +1,17 @@
+he sort_012 function sorts an array consisting of only 0, 1, and 2 in a single
+traversal. We use the Dutch National Flag Problem algorithm to achieve this.
+
+We initialize three pointers - low, mid, and high. The low pointer tracks the
+position of the next 0, the mid pointer tracks the position of the next 1, and
+the high pointer tracks the position of the next 2.
+
+We iterate through the input list with the mid pointer. When we find a 0, we
+swap it with the element at the low pointer and increment both the low and mid
+pointers. When we find a 1, we just increment the mid pointer. When we find a 2,
+we swap it with the element at the high pointer and decrement the high pointer.
+
+The function returns the sorted input list.
+
+Efficiency:
+The solution has a time complexity of O(n) as we traverse the input list once.
+The space complexity is O(1) as we don't use any additional data structures.

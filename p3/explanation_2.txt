@@ -1,0 +1,21 @@
+The rotated_array_search function searches for a target number in a rotated
+sorted array. It initializes low and high pointers and uses a binary search
+approach to find the target number.
+
+The loop runs until low is greater than high. We calculate mid as the
+average of low and high. If the middle element is equal to the target
+number, we return the index of the middle element.
+
+We check if the left side of the array is sorted. If the target number is within
+the left side, we update high to mid - 1, else we update low to mid + 1.
+
+If the left side is not sorted, then the right side must be sorted. We check if
+the target number is within the right side and update low or high
+accordingly.
+
+Finally, if the target number is not found, we return -1.
+
+Efficiency:
+The solution has a time complexity of O(log(n)) due to the binary search
+approach. The space complexity is O(1) because we use a constant number of
+variables.

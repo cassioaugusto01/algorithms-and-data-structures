@@ -1,0 +1,21 @@
+We have a TrieNode class that contains children and a flag indicating whether
+the node is the end of a word. The insert method adds a child node for a given
+character if it doesn't already exist. The suffixes method is a recursive function 
+that collects all suffixes of complete words below the current node.
+
+The Trie class has a root node and methods for inserting words and finding nodes
+for prefixes. The insert method adds a word to the trie by traversing and adding
+nodes as needed, and marking the last node as the end of a word. The find method
+returns the node representing a given prefix, or None if the prefix is not found
+in the trie.
+
+The provided test code creates a trie, inserts a list of words, and tests the 
+autocomplete functionality using the suffixes method.
+
+The time complexity of the insert method is O(L), where L is the length of the word 
+being inserted. The find method has a time complexity of O(P), where P is the length 
+of the prefix being searched. The suffixes method has a time complexity of O(N), where 
+N is the number of nodes in the trie.
+
+The space complexity of the Trie is O(W * L), where W is the number of words and L is 
+the average length of the words in the trie.

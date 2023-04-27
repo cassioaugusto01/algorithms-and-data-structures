@@ -1,0 +1,12 @@
+The sqrt function uses the binary search approach to find the floored square root of
+ an integer. First, it checks if the number is 0 or 1, in which case the answer is 
+ the number itself. Next, it initializes the variables start, end, and result. The 
+ mid variable is calculated as the average of start and end. The loop runs until 
+ start is greater than end. If the square of mid is equal to the number, the function
+  returns mid. If the square of mid is less than the number, we update start to 
+  mid + 1 and store mid as the result. Otherwise, we update end to mid - 1. 
+  In the end, we return the result.
+
+Efficiency:
+The solution has a time complexity of O(log(n)) due to the binary search approach. 
+The space complexity is O(1) because we use a constant number of variables.

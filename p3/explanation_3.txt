@@ -1,0 +1,18 @@
+The rearrange_digits function rearranges array elements to form two numbers
+with the maximum sum. We use the merge sort algorithm to sort the input list in
+descending order.
+
+merge_sort function is a standard implementation of the merge sort algorithm.
+merge function combines two sorted arrays into a single sorted array.
+
+Once the input list is sorted in descending order, we create two strings num1
+and num2. We iterate through the sorted list and add alternating elements to
+num1 and num2. This approach ensures that we create two numbers with the
+maximum possible sum.
+
+We return num1 and num2 as integers.
+
+Efficiency:
+The solution has a time complexity of O(nlog(n)) due to the merge sort algorithm.
+The space complexity is O(n) because the merge sort creates additional arrays
+during the sorting process.

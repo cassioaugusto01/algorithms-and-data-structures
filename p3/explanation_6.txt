@@ -1,0 +1,16 @@
+The get_min_max function finds the minimum and maximum values from a list of 
+unsorted integers in linear time. We initialize min_val and max_val with the 
+first element of the input list.
+
+We then iterate through the input list. If we find a number smaller than 
+min_val, we update min_val with that number. If we find a number larger 
+than max_val, we update max_val with that number.
+
+At the end of the iteration, we return a tuple (min_val, max_val) 
+containing the minimum and maximum values.
+
+Efficiency:
+
+The time complexity of the solution is O(n) as we traverse the input 
+list once. The space complexity is O(1) as we use constant extra space 
+to store the minimum and maximum values.
