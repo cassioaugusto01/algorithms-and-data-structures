@@ -12,6 +12,16 @@ into the trie. The lookup method splits the path, finds the handler in the trie,
 returns the handler or the not found handler if no handler is found. The split_path 
 method splits a path into parts.
 
-The time complexity of both adding a handler and looking up a handler is O(n), 
-where n is the number of parts in the path. The space complexity of the RouteTrie 
-is O(N * L), where N is the number of routes and L is the average number of parts in a route.
+RouteTrieNode.insert: Time complexity is O(1) since it's just adding a new child node to the children dictionary.
+
+RouteTrie.insert: Time complexity is O(n), where n is the number of parts in the path, because it iterates through the path parts and calls RouteTrieNode.insert.
+
+RouteTrie.find: Time complexity is O(n), where n is the number of parts in the path, because it iterates through the path parts to find the handler.
+
+Router.add_handler: Time complexity is O(n), where n is the number of parts in the path, because it calls the split_path method and the RouteTrie.insert method, both of which are O(n).
+
+Router.lookup: Time complexity is O(n), where n is the number of parts in the path, because it calls the split_path method and the RouteTrie.find method, both of which are O(n).
+
+Router.split_path: Time complexity is O(n), where n is the number of parts in the path, because it iterates through the path to split it into parts.
+
+The space complexity of the RouteTrie is O(N * L), where N is the number of routes and L is the average number of parts in a route.
