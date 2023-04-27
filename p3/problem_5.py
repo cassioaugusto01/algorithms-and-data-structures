@@ -15,6 +15,7 @@ class TrieNode:
             suffixes += child_node.suffixes(suffix=suffix + char)
         return suffixes
 
+
 class Trie:
     def __init__(self):
         self.root = TrieNode()
@@ -33,6 +34,7 @@ class Trie:
                 return None
             node = node.children[char]
         return node
+
 
 # Test
 MyTrie = Trie()
@@ -54,6 +56,21 @@ def f(prefix):
     else:
         print('')
 
+
+# Test cases
 f('ant')  # Should print: hology, agonist, onym
 f('f')     # Should print: un, unction, actory
 f('tri')   # Should print: e, gger, gonometry, pod
+
+# Edge cases
+# Test Case 1: Empty input
+f('')  # Should print: empty line
+# Test Case 2: Non-existent prefix
+f('xyz')  # Should print: xyz not found
+# Test Case 3: Single character words
+MyTrie.insert("a")
+f("a")  # Should print: empty line (as "a" is a word itself)
+# Test Case 4: Large input
+large_word = "a" * 1000
+MyTrie.insert(large_word)
+f("a" * 999)  # Should print: a (as it's the suffix of the large input)
