@@ -1,22 +1,35 @@
 """
 Problem 7: Request Routing in a Web Server with a Trie
 HTTPRouter using a Trie
-For this exercise we are going to implement an HTTPRouter like you would find in a typical web server using the Trie data structure we learned previously.
+For this exercise we are going to implement an HTTPRouter like you would find in a typical web server using 
+the Trie data structure we learned previously.
 
-There are many different implementations of HTTP Routers such as regular expressions or simple string matching, but the Trie is an excellent and very efficient data structure for this purpose.
+There are many different implementations of HTTP Routers such as regular expressions or simple string matching, 
+but the Trie is an excellent and very efficient data structure for this purpose.
 
-The purpose of an HTTP Router is to take a URL path like "/", "/about", or "/blog/2019-01-15/my-awesome-blog-post" and figure out what content to return. In a dynamic web server, the content will often come from a block of code called a handler.
+The purpose of an HTTP Router is to take a URL path like "/", "/about", or "/blog/2019-01-15/my-awesome-blog-post" 
+and figure out what content to return. In a dynamic web server, the content will often come from a block of code 
+called a handler.
 
 
-First we need to implement a slightly different Trie than the one we used for autocomplete. Instead of simple words the Trie will contain a part of the http path at each node, building from the root node /
+First we need to implement a slightly different Trie than the one we used for autocomplete. Instead of simple words 
+the Trie will contain a part of the http path at each node, building from the root node /
 
-In addition to a path though, we need to know which function will handle the http request. In a real router we would probably pass an instance of a class like Python's SimpleHTTPRequestHandler which would be responsible for handling requests to that path. For the sake of simplicity we will just use a string that we can print out to ensure we got the right handler
+In addition to a path though, we need to know which function will handle the http request. In a real router we would 
+probably pass an instance of a class like Python's SimpleHTTPRequestHandler which would be responsible for handling 
+requests to that path. For the sake of simplicity we will just use a string that we can print out to ensure we got 
+the right handler
 
-We could split the path into letters similar to how we did the autocomplete Trie, but this would result in a Trie with a very large number of nodes and lengthy traversals if we have a lot of pages on our site. A more sensible way to split things would be on the parts of the path that are separated by slashes ("/"). A Trie with a single path entry of: "/about/me" would look like:
+We could split the path into letters similar to how we did the autocomplete Trie, but this would result in a Trie 
+with a very large number of nodes and lengthy traversals if we have a lot of pages on our site. A more sensible way 
+to split things would be on the parts of the path that are separated by slashes ("/"). A Trie with a single path entry 
+of: "/about/me" would look like:
 
 (root, None) -> ("about", None) -> ("me", "About Me handler")
 
-We can also simplify our RouteTrie a bit by excluding the suffixes method and the endOfWord property on RouteTrieNodes. We really just need to insert and find nodes, and if a RouteTrieNode is not a leaf node, it won't have a handler which is fine.
+We can also simplify our RouteTrie a bit by excluding the suffixes method and the endOfWord property on RouteTrieNodes. 
+We really just need to insert and find nodes, and if a RouteTrieNode is not a leaf node, it won't have a handler which 
+is fine.
 
 # A RouteTrie will store our routes and their associated handlers
 class RouteTrie:
@@ -38,13 +51,16 @@ class RouteTrieNode:
 
     def insert(self, ...):
         # Insert the node as before
-Next we need to implement the actual Router. The router will initialize itself with a RouteTrie for holding routes and associated handlers. It should also support adding a handler by path and looking up a handler by path. All of these operations will be delegated to the RouteTrie.
+Next we need to implement the actual Router. The router will initialize itself with a RouteTrie for holding routes 
+and associated handlers. It should also support adding a handler by path and looking up a handler by path. All of 
+these operations will be delegated to the RouteTrie.
 
 Hint: the RouteTrie stores handlers under path parts, so remember to split your path around the '/' character
 
 Bonus Points: Add a not found handler to your Router which is returned whenever a path is not found in the Trie.
 
-More Bonus Points: Handle trailing slashes! A request for '/about' or '/about/' are probably looking for the same page. Requests for '' or '/' are probably looking for the root handler. Handle these edge cases in your Router.
+More Bonus Points: Handle trailing slashes! A request for '/about' or '/about/' are probably looking for the same page. 
+Requests for '' or '/' are probably looking for the root handler. Handle these edge cases in your Router.
 
 # The Router class will wrap the Trie and handle 
 class Router:
@@ -85,18 +101,31 @@ print(router.lookup("/home/about/me")) # should print 'not found handler' or Non
 """
 class RouteTrieNode:
     def __init__(self, handler=None):
+        """
+        Initialize the node with children and a handler.
+        """
         self.children = {}
         self.handler = handler
 
     def insert(self, path_part):
+        """
+        Insert a node for the given path part if it doesn't exist.
+        """
         if path_part not in self.children:
             self.children[path_part] = RouteTrieNode()
 
+
 class RouteTrie:
     def __init__(self, root_handler):
+        """
+        Initialize the trie with a root node and a handler.
+        """
         self.root = RouteTrieNode(root_handler)
 
     def insert(self, path_parts, handler):
+        """
+        Insert the given handler for the given path parts.
+        """
         node = self.root
         for part in path_parts:
             if part not in node.children:
@@ -105,6 +134,9 @@ class RouteTrie:
         node.handler = handler
 
     def find(self, path_parts):
+        """
+        Find and return the handler for the given path parts, or None if not found.
+        """
         node = self.root
         for part in path_parts:
             if part not in node.children:
@@ -112,16 +144,26 @@ class RouteTrie:
             node = node.children[part]
         return node.handler
 
+
 class Router:
     def __init__(self, root_handler, not_found_handler=None):
+        """
+        Initialize the router with a RouteTrie for holding routes and associated handlers.
+        """
         self.route_trie = RouteTrie(root_handler)
         self.not_found_handler = not_found_handler
 
     def add_handler(self, path, handler):
+        """
+        Add a handler for the given path.
+        """
         path_parts = self.split_path(path)
         self.route_trie.insert(path_parts, handler)
 
     def lookup(self, path):
+        """
+        Look up the handler for the given path and return it, or the not found handler if not found.
+        """
         path_parts = self.split_path(path)
         handler = self.route_trie.find(path_parts)
         if handler is None:
@@ -129,14 +171,39 @@ class Router:
         return handler
 
     def split_path(self, path):
+        """
+        Split the path into parts for both add_handler and lookup functions.
+        """
         return [part for part in path.split("/") if part]
+
 
 # Test Cases
 router = Router("root handler", "not found handler")
 router.add_handler("/home/about", "about handler")
 
-print(router.lookup("/")) # should print 'root handler'
-print(router.lookup("/home")) # should print 'not found handler'
-print(router.lookup("/home/about")) # should print 'about handler'
-print(router.lookup("/home/about/")) # should print 'about handler'
-print(router.lookup("/home/about/me")) # should print 'not found handler'
+print(router.lookup("/"))  # should print 'root handler'
+print(router.lookup("/home"))  # should print 'not found handler'
+print(router.lookup("/home/about"))  # should print 'about handler'
+print(router.lookup("/home/about/"))  # should print 'about handler'
+print(router.lookup("/home/about/me"))  # should print 'not found handler'
+
+# Additional Test Cases
+router.add_handler("/contact", "contact handler")
+router.add_handler("/articles/2023", "articles handler")
+
+# Test Case 1: Edge case - empty input
+print(router.lookup(""))  # should print 'root handler'
+
+# Test Case 2: Edge case - trailing slash
+print(router.lookup("/contact/"))  # should print 'contact handler'
+
+# Test Case 3: Edge case - non-existing path
+print(router.lookup("/nonexistent"))  # should print 'not found handler'
+
+# Test Case 4: Edge case - large path parts
+router.add_handler("/" + "a" * 1000, "large path handler")
+print(router.lookup("/" + "a" * 1000))  # should print 'large path handler'
+
+# Test Case 5: Test with multiple parts in the path
+router.add_handler("/articles/2023/april", "april articles handler")
+print(router.lookup("/articles/2023/april"))  # should print 'april articles handler'
