@@ -12,10 +12,27 @@ in the trie.
 The provided test code creates a trie, inserts a list of words, and tests the 
 autocomplete functionality using the suffixes method.
 
-The time complexity of the insert method is O(L), where L is the length of the word 
-being inserted. The find method has a time complexity of O(P), where P is the length 
-of the prefix being searched. The suffixes method has a time complexity of O(N), where 
-N is the number of nodes in the trie.
+Here is the modular complexity analysis for each method in the Trie and TrieNode classes:
 
-The space complexity of the Trie is O(W * L), where W is the number of words and L is 
-the average length of the words in the trie.
+TrieNode.insert:
+Time Complexity: O(1)
+Space Complexity: O(1)
+
+TrieNode.suffixes:
+Time Complexity: O(N)
+Space Complexity: O(N)
+(Where N is the total number of nodes in the trie)
+
+Trie.init:
+Time Complexity: O(1)
+Space Complexity: O(1)
+
+Trie.insert:
+Time Complexity: O(L)
+Space Complexity: O(L)
+(Where L is the length of the word being inserted)
+
+Trie.find:
+Time Complexity: O(P)
+Space Complexity: O(1)
+(Where P is the length of the prefix being searched)
